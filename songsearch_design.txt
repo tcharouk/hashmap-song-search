@@ -1,0 +1,38 @@
+Song Search Design by Timothy Charouk
+
+My design will be composed of three main structures. Firstly, all the songs
+will be stored in a dynamic array to accomodate for a varying number of
+songs. In each array index the name of the song, the artist's name, and a
+pointer to the lyrics will be stored. The pointer will point to another
+dynamic array which will store that particular song's lyrics. Each word
+makes up one spot in that array, since different songs have different
+amounts of words the array must be dynamic. Each word will then be hashed
+into a hash vector. The hash vector use the hash function developed by
+Bob Jenkins to sort the strings correctly. For every word the hash vector
+will contain an array of structs containging the indices of the top ten
+songs containing that word and their corresponding frequency for
+comparisons.
+
+When the data is loaded the program will hash every word by running through
+the array of lyrics and counting the instances of that word. For the first
+ten songs it will simply compare each one to the others and place their
+index and the frequency of the word in that song into the correct spot of
+the array of that hash spot. There will then be an array of ten song
+indices in order. After ten, the program will compare each new song's
+frequency to the least amount for that word. If it is greater than the
+least then the program will find its correct spot and store it in the hash
+vector array. After the program has gone through every word, all the words
+will be hashed with the corresponding top ten songs. This means that when a
+user goes to search for a word, the hash vector will have already sorted
+the top songs and the search will be very quick. The search will simply
+have to find the word in the hash table, which is very quick since that is
+the point of a hash table. After finding the word, the program will use the
+indices of the top ten songs to go back to the song array and find the
+context of each occurence to print out.
+
+This program is not very memory efficient but should be very quick. This
+program is all about the user experience. Once investors understand the
+capabilities of this program, like they did in HBO's new series Silicon
+Valley, the space issues won't matter too much.
+
+Signed off by: Ashley?
